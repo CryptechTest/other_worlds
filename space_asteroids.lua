@@ -6,7 +6,7 @@ local YMAX = otherworlds.settings.space_asteroids.YMAX or 6000
 minetest.register_on_generated(
 		otherworlds.asteroids.create_on_generated(YMIN, YMAX, {
 
-	c_air = minetest.get_content_id("air"),
+	c_air = minetest.get_content_id("vacuum:vacuum"),
 	c_obsidian = minetest.get_content_id("default:obsidian"),
 	c_stone = minetest.get_content_id("asteroid:stone"),
 	c_cobble = minetest.get_content_id("asteroid:cobble"),
