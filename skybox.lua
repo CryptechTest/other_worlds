@@ -74,7 +74,7 @@ minetest.register_globalstep(function(dtime)
 
 		local name = player:get_player_name()
 		local pos = player:get_pos()
-		local current = player_list[name] or "blackness"
+		local current = player_list[name] or ""
 
 -------- this just adds nether background for xanadu server
 if nether_mod and pos.y < -28000 and current ~= "nether" then
@@ -199,8 +199,8 @@ if nether_mod and pos.y < -28000 and current ~= "nether" then
 				sunrise_visible = false
 			})
 
-			player:set_moon({visible = false})
-			player:set_stars({visible = true})
+			player:({visible = false})
+			player:set_stars({visible = false})
 			player:set_sun({visible = true, scale = 0.1})
 
 			player_list[name] = "blackness"
