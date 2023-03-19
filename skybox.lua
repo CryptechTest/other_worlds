@@ -201,7 +201,7 @@ if nether_mod and pos.y < -28000 and current ~= "nether" then
 
 			player:set_moon({visible = false})
 			player:set_stars({visible = false})
-			player:set_sun({visible = true, scale = 0.1})
+			player:set_sun({visible = true, scale = 0.1, sunrise_visible = false})
 
 			player_list[name] = "blackness"
 
