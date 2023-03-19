@@ -7,10 +7,10 @@ local YMAX = otherworlds.settings.redsky_asteroids.YMAX or 7000
 minetest.register_on_generated(
 		otherworlds.asteroids.create_on_generated(YMIN, YMAX, {
 
-	c_air = minetest.get_content_id("air"),
+	c_air = minetest.get_content_id("vacuum:vacuum"),
 	c_obsidian = minetest.get_content_id("default:obsidian"),
 	c_stone = minetest.get_content_id("asteroid:redstone"),
-	c_cobble = minetest.get_content_id("air"),
+	c_cobble = minetest.get_content_id("vacuum:vacuum"),
 	c_gravel = minetest.get_content_id("asteroid:redgravel"),
 	c_dust = minetest.get_content_id("asteroid:reddust"),
 	c_ironore = minetest.get_content_id("asteroid:ironore"),
