@@ -1,9 +1,9 @@
 -- Heights for skyboxes
 local underground = -50
 local space_low = 5000
-local space_high = 6999
-local redsky_low = 7000
-local redsky_high = 9999
+local space_high = 14999
+local redsky_low = 14000
+local redsky_high = 20999
 
 -- Holds name of skybox showing for each player
 local player_list = {}

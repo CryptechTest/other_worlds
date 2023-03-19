@@ -1,6 +1,6 @@
 -- Approximate realm limits
-local YMIN = otherworlds.settings.redsky_asteroids.YMIN or 6000
-local YMAX = otherworlds.settings.redsky_asteroids.YMAX or 7000
+local YMIN = otherworlds.settings.redsky_asteroids.YMIN or 15000
+local YMAX = otherworlds.settings.redsky_asteroids.YMAX or 17000
 
 
 -- Register on_generated function for this layer

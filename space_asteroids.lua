@@ -1,6 +1,6 @@
 -- Approximate realm limits
 local YMIN = otherworlds.settings.space_asteroids.YMIN or 5000
-local YMAX = otherworlds.settings.space_asteroids.YMAX or 6000
+local YMAX = otherworlds.settings.space_asteroids.YMAX or 7000
 
 -- Register on_generated function for this layer
 minetest.register_on_generated(
