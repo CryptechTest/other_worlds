@@ -14,7 +14,7 @@ minetest.register_on_generated(
 	c_dust = minetest.get_content_id("asteroid:dust"),
 	c_ironore = minetest.get_content_id("default:stone_with_iron"),
 	c_copperore = minetest.get_content_id("default:stone_with_copper"),
-	c_goldore = minetest.get_content_id("default:stone_with_gold"),
+	c_coalore = minetest.get_content_id("default:stone_with_coal"),
 	c_diamondore = minetest.get_content_id("default:stone_with_diamond"),
 	c_meseore = minetest.get_content_id("default:stone_with_mese"),
 	c_waterice = minetest.get_content_id("default:ice"),

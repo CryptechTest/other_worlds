@@ -110,7 +110,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 	local c_dust = content_ids.c_dust
 	local c_ironore = content_ids.c_ironore
 	local c_copperore = content_ids.c_copperore
-	local c_goldore = content_ids.c_goldore
+	local c_coalore = content_ids.c_coalore
 	local c_diamondore = content_ids.c_diamondore
 	local c_meseore = content_ids.c_meseore
 	local c_waterice = content_ids.c_waterice
@@ -203,7 +203,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 							if random(ORECHA) == 2 then
 
 								if nvals5[ni] > 0.6 then
-									data[vi] = c_goldore
+									data[vi] = c_coalore
 								elseif nvals5[ni] < -0.6 then
 									data[vi] = c_diamondore
 								elseif nvals5[ni] > 0.2 then
@@ -303,7 +303,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 						or nodeid == c_cobble
 						or nodeid == c_stone
 						or nodeid == c_diamondore
-						or nodeid == c_goldore
+						or nodeid == c_coalore
 						or nodeid == c_meseore
 						or nodeid == c_copperore
 						or nodeid == c_ironore then

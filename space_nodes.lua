@@ -58,7 +58,7 @@ minetest.register_node(":asteroid:dust", {
 	description = "Asteroid Dust",
 	tiles = {"asteroid_dust.png"},
 	is_ground_content = false,
-	groups = {crumbly = 3},
+	groups = {crumbly = 3, sand = 1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_gravel_footstep", gain = 0.1}
 	})
@@ -68,7 +68,7 @@ minetest.register_node(":asteroid:reddust", {
 	description = "Asteroid Dust",
 	tiles = {"asteroid_reddust.png"},
 	is_ground_content = false,
-	groups = {crumbly = 3},
+	groups = {crumbly = 3, sand = 1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_gravel_footstep", gain = 0.1}
 	})
@@ -92,12 +92,12 @@ minetest.register_node(":asteroid:copperore", {
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node(":asteroid:goldore", {
-	description = "Asteroid Gold Ore",
-	tiles = {"asteroid_redstone.png^default_mineral_gold.png"},
+minetest.register_node(":asteroid:coalore", {
+	description = "Asteroid Coal Ore",
+	tiles = {"asteroid_redstone.png^default_mineral_coalpng"},
 	is_ground_content = false,
 	groups = {cracky = 2},
-	drop = "default:gold_lump",
+	drop = "default:coal_lump",
 	sounds = default.node_sound_stone_defaults()
 })
 
