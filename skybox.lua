@@ -165,7 +165,7 @@ if nether_mod and pos.y < -28000 and current ~= "nether" then
 			player_list[name] = "space"
 
 			if otherworlds.settings.gravity.enable then
-				set_gravity(player, 0.2)
+				set_gravity(player, 0.1)
 			end
 
 		-- Redsky
@@ -186,7 +186,7 @@ if nether_mod and pos.y < -28000 and current ~= "nether" then
 			player_list[name] = "redsky"
 
 			if otherworlds.settings.gravity.enable then
-				set_gravity(player, 0.1)
+				set_gravity(player, 0.08)
 			end
 
 		-- Everything else (blackness)
@@ -206,7 +206,7 @@ if nether_mod and pos.y < -28000 and current ~= "nether" then
 			player_list[name] = "blackness"
 
 			if otherworlds.settings.gravity.enable then
-				set_gravity(player, 0.01)
+				set_gravity(player, 0.03)
 			end
 		end
 	end
