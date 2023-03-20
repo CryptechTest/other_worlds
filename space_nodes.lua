@@ -94,7 +94,7 @@ minetest.register_node(":asteroid:copperore", {
 
 minetest.register_node(":asteroid:coalore", {
 	description = "Asteroid Coal Ore",
-	tiles = {"asteroid_redstone.png^default_mineral_coalpng"},
+	tiles = {"asteroid_redstone.png^default_mineral_coal.png"},
 	is_ground_content = false,
 	groups = {cracky = 2},
 	drop = "default:coal_lump",
