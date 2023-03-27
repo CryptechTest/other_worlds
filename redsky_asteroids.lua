@@ -15,7 +15,7 @@ minetest.register_on_generated(
 	c_dust = minetest.get_content_id("asteroid:reddust"),
 	c_ironore = minetest.get_content_id("asteroid:ironore"),
 	c_copperore = minetest.get_content_id("asteroid:copperore"),
-	c_coalore = minetest.get_content_id("default:stone_with_coal"),
+	c_coalore = minetest.get_content_id("asteroid:coalore"),
 	c_diamondore = minetest.get_content_id("asteroid:diamondore"),
 	c_meseore = minetest.get_content_id("asteroid:meseore"),
 	c_waterice = minetest.get_content_id("default:ice"),
