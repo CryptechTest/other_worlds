@@ -148,18 +148,25 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 		local area = VoxelArea:new{MinEdge = emin, MaxEdge = emax}
 		local data = vm:get_data()
 
-		local nvals1 = minetest.get_perlin_map(np_large,
-				chulens):get3dMap_flat(minpos)
-		local nvals3 = minetest.get_perlin_map(np_fissure,
-				chulens):get3dMap_flat(minpos)
-		local nvals4 = minetest.get_perlin_map(np_small,
-				chulens):get3dMap_flat(minpos)
-		local nvals5 = minetest.get_perlin_map(np_ores,
-				chulens):get3dMap_flat(minpos)
-		local nvals6 = minetest.get_perlin_map(np_latmos,
-				chulens):get3dMap_flat(minpos)
-		local nvals7 = minetest.get_perlin_map(np_satmos,
-				chulens):get3dMap_flat(minpos)
+		local nvals1 = {}
+		local nvals3 = {}
+		local nvals4 = {}
+		local nvals5 = {}
+		local nvals6 = {}
+		local nvals7 = {}
+
+		minetest.get_perlin_map(np_large,
+				chulens):get_3d_map_flat(minpos, nvals1)
+		minetest.get_perlin_map(np_fissure,
+				chulens):get_3d_map_flat(minpos, nvals3)
+		minetest.get_perlin_map(np_small,
+				chulens):get_3d_map_flat(minpos, nvals4)
+		minetest.get_perlin_map(np_ores,
+				chulens):get_3d_map_flat(minpos, nvals5)
+		minetest.get_perlin_map(np_latmos,
+				chulens):get_3d_map_flat(minpos, nvals6)
+		minetest.get_perlin_map(np_satmos,
+				chulens):get_3d_map_flat(minpos, nvals7)
 
 		local ni = 1
 
