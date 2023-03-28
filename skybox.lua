@@ -1,6 +1,6 @@
 -- Heights for skyboxes
-local underground = -50
-local space_low = 5000
+local underground = -75
+local space_low = 4000
 local space_high = 14999
 local redsky_low = 14000
 local redsky_high = 20999
@@ -20,22 +20,22 @@ local spaceskybox = {
 
 -- Redsky skybox
 local redskybox = {
-	"sky_pos_z.png^[colorize:#99000050",
-	"sky_neg_z.png^[transformR180^[colorize:#99000050",
-	"sky_neg_y.png^[transformR270^[colorize:#99000050",
-	"sky_pos_y.png^[transformR270^[colorize:#99000050",
-	"sky_pos_x.png^[transformR270^[colorize:#99000050",
-	"sky_neg_x.png^[transformR90^[colorize:#99000050"
+	"sky_pos_z.png^[colorize:#88000050",
+	"sky_neg_z.png^[transformR180^[colorize:#88000050",
+	"sky_neg_y.png^[transformR270^[colorize:#88000050",
+	"sky_pos_y.png^[transformR270^[colorize:#88000050",
+	"sky_pos_x.png^[transformR270^[colorize:#88000050",
+	"sky_neg_x.png^[transformR90^[colorize:#88000050"
 }
 
 -- Darkest space skybox
 local darkskybox = {
 	"sky_pos_z.png^[colorize:#00005070",
-	"sky_neg_z.png^[transformR180^[colorize:#00005070",
-	"sky_neg_y.png^[transformR270^[colorize:#00005070",
-	"sky_pos_y.png^[transformR270^[colorize:#00005070",
-	"sky_pos_x.png^[transformR270^[colorize:#00005070",
-	"sky_neg_x.png^[transformR90^[colorize:#00005070"
+	"sky_neg_z.png^[transformR180^[colorize:#00004070",
+	"sky_neg_y.png^[transformR270^[colorize:#00004070",
+	"sky_pos_y.png^[transformR270^[colorize:#00004070",
+	"sky_pos_x.png^[transformR270^[colorize:#00004070",
+	"sky_neg_x.png^[transformR90^[colorize:#00004070"
 }
 
 
