@@ -121,8 +121,9 @@ minetest.register_node(":asteroid:meseore", {
 
 minetest.register_node(":asteroid:atmos", {
 	description = "Comet Atmosphere",
-	drawtype = "glasslike",
-	tiles = {"asteroid_atmos.png"},
+	--drawtype = "glasslike",
+	drawtype = "liquid",
+	tiles = {"asteroid_atmos6.png"},
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -131,6 +132,8 @@ minetest.register_node(":asteroid:atmos", {
 	buildable_to = true,
 	is_ground_content = false,
 	use_texture_alpha = "blend",--true,
-	post_effect_color = {a = 31, r = 241, g = 248, b = 255},
-	groups = {not_in_creative_inventory = 1}
+	--post_effect_color = {a = 31, r = 241, g = 248, b = 255},
+	post_effect_color = {a = 10, r = 241, g = 248, b = 255},
+	groups = {not_in_creative_inventory = 1, atmosphere = 3},
+	waving = 3
 })
