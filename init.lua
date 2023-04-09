@@ -13,9 +13,13 @@ dofile(modpath .. "skybox.lua")
 dofile(modpath .. "asteroid_layer_helpers.lua")
 
 if otherworlds.settings.space_asteroids.enable then
-	dofile(modpath .. "space_asteroids.lua")
+    dofile(modpath .. "space_asteroids.lua")
 end
 
 if otherworlds.settings.redsky_asteroids.enable then
-	dofile(modpath .. "redsky_asteroids.lua")
+    dofile(modpath .. "space_redsky_asteroids.lua")
+end
+
+if otherworlds.settings.space_mid_asteroids.enable then
+    dofile(modpath .. "space_mid_asteroids.lua")
 end
