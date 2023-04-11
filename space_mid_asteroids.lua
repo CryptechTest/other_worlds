@@ -18,5 +18,8 @@ minetest.register_on_generated(otherworlds.asteroids.create_on_generated(YMIN, Y
     c_meseore = minetest.get_content_id("default:stone_with_mese"),
     c_waterice = minetest.get_content_id("default:ice"),
     c_atmos = minetest.get_content_id("asteroid:atmos"),
-    c_snowblock = minetest.get_content_id("default:snowblock")
+    c_snowblock = minetest.get_content_id("default:snowblock"),
+    c_titanium = minetest.get_content_id("ctg_world:stone_space_with_titanium"),
+    c_aluminum = minetest.get_content_id("ctg_world:stone_space_with_aluminum"),
+    c_nickel = minetest.get_content_id("ctg_world:stone_space_with_nickel")
 }))

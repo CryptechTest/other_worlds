@@ -18,7 +18,10 @@ minetest.register_on_generated(otherworlds.asteroids.create_on_generated(YMIN, Y
     c_meseore = minetest.get_content_id("asteroid:meseore"),
     c_waterice = minetest.get_content_id("default:ice"),
     c_atmos = minetest.get_content_id("asteroid:atmos"),
-    c_snowblock = minetest.get_content_id("default:snowblock")
+    c_snowblock = minetest.get_content_id("default:snowblock"),
+    c_titanium = minetest.get_content_id("ctg_world:stone_red_with_titanium"),
+    c_aluminum = minetest.get_content_id("ctg_world:red_stone_with_aluminum"),
+    c_nickel = minetest.get_content_id("ctg_world:red_stone_with_nickel")
 }))
 
 -- Deco code for grass and crystal
@@ -35,6 +38,37 @@ local crystal = {"crystals:ghost_crystal_1", "crystals:ghost_crystal_2", "crysta
 
 local random = math.random
 
+local function get_solid_node(pos)
+    local node = nil
+    local npos = {
+        x = pos.x,
+        y = pos.y,
+        z = pos.z
+    }
+    local c = 0
+    while node == nil and c < 128 do
+        if (minetest.get_node(npos).name ~= "vacuum" and minetest.get_node(npos).name ~= "vacuum:atmos" and
+            minetest.get_node(npos).name ~= "air") then
+            return npos
+        end
+        npos = {
+            x = npos.x,
+            y = npos.y - 1,
+            z = npos.z
+        }
+        c = c + 1
+    end
+    return node
+end
+
+local function is_solid(pos)
+    if (minetest.get_node(pos).name ~= "vacuum" and minetest.get_node(pos).name ~= "vacuum:atmos" and
+        minetest.get_node(pos).name ~= "air") then
+        return true
+    end
+    return false
+end
+
 -- Add surface decoration
 minetest.register_on_generated(function(minp, maxp)
 
@@ -43,35 +77,50 @@ minetest.register_on_generated(function(minp, maxp)
     end
 
     local bpos, ran
-    local coal = minetest.find_nodes_in_area_under_air(minp, maxp, {"asteroid:redgravel"})
+    local coal = minetest.find_nodes_in_area(minp, maxp, {"asteroid:redgravel"})
 
     for n = 1, #coal do
 
-        bpos = {
-            x = coal[n].x,
-            y = coal[n].y + 1,
-            z = coal[n].z
-        }
+        local coal_pos = get_solid_node(coal[n])
 
-        ran = random(TOPDECO)
+        if (coal_pos ~= nil and coal_pos) then
 
-        if ran < 100 then -- grass
+            bpos = {
+                x = coal_pos.x,
+                y = coal_pos.y + 1,
+                z = coal_pos.z
+            }
+            local cpos = {
+                x = bpos.x,
+                y = bpos.y + 1,
+                z = bpos.z
+            }
+            ran = random(TOPDECO)
 
-            minetest.swap_node(bpos, {
-                name = grass[random(#grass)]
-            })
+            if minetest.get_node(coal_pos).name == "asteroid:redgravel" and minetest.get_node(bpos).name ~=
+                "asteroid:reddust" and minetest.get_node(bpos).name ~= "asteroid:redstone" and
+                minetest.get_node(bpos).name ~= "asteroid:redcobble" and minetest.get_node(bpos).name ~=
+                "asteroid:redgravel" then
 
-        elseif ran >= 180 and ran <= 200 then -- other plants
+                if ran < 100 then -- grass
 
-            minetest.swap_node(bpos, {
-                name = flower[random(#flower)]
-            })
+                    minetest.swap_node(bpos, {
+                        name = grass[random(#grass)]
+                    })
 
-        elseif ran == TOPDECO then -- crystals
+                elseif ran >= 180 and ran <= 200 then -- other plants
 
-            minetest.swap_node(bpos, {
-                name = crystal[random(#crystal)]
-            })
+                    minetest.swap_node(bpos, {
+                        name = flower[random(#flower)]
+                    })
+
+                elseif ran == TOPDECO then -- crystals
+
+                    minetest.swap_node(bpos, {
+                        name = crystal[random(#crystal)]
+                    })
+                end
+            end
         end
     end
 end)
