@@ -270,7 +270,8 @@ minetest.register_globalstep(function(dtime)
                 textures = space_mid_skybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#610088"
+                base_color = "#610088",
+                fog_tint_type = "moon_tint"
             })
 
             player:set_moon({
@@ -298,7 +299,8 @@ minetest.register_globalstep(function(dtime)
                 textures = redskybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#880000"
+                base_color = "#880000",
+                fog_tint_type = "moon_tint"
             })
 
             player:set_moon({
@@ -326,7 +328,8 @@ minetest.register_globalstep(function(dtime)
                 textures = space_deep_skybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#000040"
+                base_color = "#000040",
+                fog_tint_type = "moon_tint"
             })
 
             player:set_moon({
@@ -348,13 +351,14 @@ minetest.register_globalstep(function(dtime)
             end
 
             -- Everything else (blackness)
-        elseif pos.y > space_deep_high and current ~= "blackness" then
+        elseif pos.y < -10999 and current ~= "blackness" then
             player:set_sky({
                 type = "skybox",
                 textures = darkskybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#101010"
+                base_color = "#101010",
+                fog_tint_type = "moon_tint"
             })
 
             player:set_moon({
