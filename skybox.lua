@@ -198,7 +198,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.0,
+                scale = 1.1,
                 sunrise_visible = false
             })
 
@@ -225,7 +225,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.0,
+                scale = 1.2,
                 sunrise_visible = false
             })
 
@@ -253,7 +253,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.0,
+                scale = 1.3,
                 sunrise_visible = false
             })
 
@@ -281,7 +281,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.0,
+                scale = 1.1,
                 sunrise_visible = false
             })
 
@@ -309,7 +309,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.5,
+                scale = 0.6,
                 sunrise_visible = false
             })
 
@@ -336,8 +336,8 @@ minetest.register_globalstep(function(dtime)
                 visible = false
             })
             player:set_sun({
-                visible = false,
-                scale = 0.5,
+                visible = true,
+                scale = 0.1,
                 sunrise_visible = false
             })
 
