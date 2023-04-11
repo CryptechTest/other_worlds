@@ -2,65 +2,64 @@
 local underground = -75
 
 local atmos_low = 1000
-local atmos_up = 2000 -- start height
-local space_low = 4000 -- start height
-local space_mid = 10000 -- start height
-local space_high = 16000 - 1 -- end height
-local redsky_low = 16000 -- start height
+local atmos_up = 2000         -- start height
+local space_low = 4000        -- start height
+local space_mid = 10000       -- start height
+local space_high = 16000 - 1  -- end height
+local redsky_low = 16000      -- start height
 local redsky_high = 22000 - 1 -- end height
-local space_deep_low = 22000 -- start height
+local space_deep_low = 22000  -- start height
 local space_deep_high = 31000
 
 -- Holds name of skybox showing for each player
 local player_list = {}
 
 -- Atmos skybox..
-local atmos_skybox = {"sky_pos_z.png^[colorize:#007188BB", "sky_neg_z.png^[transformR180^[colorize:#007188BB",
-                      "sky_neg_y.png^[transformR270^[colorize:#007188BB",
-                      "sky_pos_y.png^[transformR270^[colorize:#007188BB",
-                      "sky_pos_x.png^[transformR270^[colorize:#007188BB",
-                      "sky_neg_x.png^[transformR90^[colorize:#007188BB"}
+local atmos_skybox = { "sky_pos_z.png^[colorize:#007188BB", "sky_neg_z.png^[transformR180^[colorize:#007188BB",
+    "sky_neg_y.png^[transformR270^[colorize:#007188BB",
+    "sky_pos_y.png^[transformR270^[colorize:#007188BB",
+    "sky_pos_x.png^[transformR270^[colorize:#007188BB",
+    "sky_neg_x.png^[transformR90^[colorize:#007188BB" }
 
 -- Outerspace skybox
-local space_skybox = {"sky_pos_z.png^[colorize:#00005030", "sky_neg_z.png^[transformR180^[colorize:#00005030",
-                      "sky_neg_y.png^[transformR270^[colorize:#00005030",
-                      "sky_pos_y.png^[transformR270^[colorize:#00005030",
-                      "sky_pos_x.png^[transformR270^[colorize:#00005030",
-                      "sky_neg_x.png^[transformR90^[colorize:#00005030"}
+local space_skybox = { "sky_pos_z.png^[colorize:#00005030", "sky_neg_z.png^[transformR180^[colorize:#00005030",
+    "sky_neg_y.png^[transformR270^[colorize:#00005030",
+    "sky_pos_y.png^[transformR270^[colorize:#00005030",
+    "sky_pos_x.png^[transformR270^[colorize:#00005030",
+    "sky_neg_x.png^[transformR90^[colorize:#00005030" }
 
 -- Midspace skybox
-local space_mid_skybox = {"sky_pos_z.png^[colorize:#61008830", "sky_neg_z.png^[transformR180^[colorize:#61008830",
-                          "sky_neg_y.png^[transformR270^[colorize:#61008830",
-                          "sky_pos_y.png^[transformR270^[colorize:#61008830",
-                          "sky_pos_x.png^[transformR270^[colorize:#61008830",
-                          "sky_neg_x.png^[transformR90^[colorize:#61008830"}
+local space_mid_skybox = { "sky_pos_z.png^[colorize:#61008830", "sky_neg_z.png^[transformR180^[colorize:#61008830",
+    "sky_neg_y.png^[transformR270^[colorize:#61008830",
+    "sky_pos_y.png^[transformR270^[colorize:#61008830",
+    "sky_pos_x.png^[transformR270^[colorize:#61008830",
+    "sky_neg_x.png^[transformR90^[colorize:#61008830" }
 
 -- Redsky skybox
-local redskybox = {"sky_pos_z.png^[colorize:#88000050", "sky_neg_z.png^[transformR180^[colorize:#88000050",
-                   "sky_neg_y.png^[transformR270^[colorize:#88000050",
-                   "sky_pos_y.png^[transformR270^[colorize:#88000050",
-                   "sky_pos_x.png^[transformR270^[colorize:#88000050", "sky_neg_x.png^[transformR90^[colorize:#88000050"}
+local redskybox = { "sky_pos_z.png^[colorize:#88000050", "sky_neg_z.png^[transformR180^[colorize:#88000050",
+    "sky_neg_y.png^[transformR270^[colorize:#88000050",
+    "sky_pos_y.png^[transformR270^[colorize:#88000050",
+    "sky_pos_x.png^[transformR270^[colorize:#88000050", "sky_neg_x.png^[transformR90^[colorize:#88000050" }
 
 -- Deep space skybox
-local space_deep_skybox = {"sky_pos_z.png^[colorize:#000000A0", "sky_neg_z.png^[transformR180^[colorize:#000000A0",
-                           "sky_neg_y.png^[transformR270^[colorize:#000000A0",
-                           "sky_pos_y.png^[transformR270^[colorize:#000000A0",
-                           "sky_pos_x.png^[transformR270^[colorize:#000000A0",
-                           "sky_neg_x.png^[transformR90^[colorize:#000000A0"}
+local space_deep_skybox = { "sky_pos_z.png^[colorize:#000000A0", "sky_neg_z.png^[transformR180^[colorize:#000000A0",
+    "sky_neg_y.png^[transformR270^[colorize:#000000A0",
+    "sky_pos_y.png^[transformR270^[colorize:#000000A0",
+    "sky_pos_x.png^[transformR270^[colorize:#000000A0",
+    "sky_neg_x.png^[transformR90^[colorize:#000000A0" }
 
 -- Darkest space skybox
-local darkskybox = {"sky_pos_z.png^[colorize:#00005070", "sky_neg_z.png^[transformR180^[colorize:#00004070",
-                    "sky_neg_y.png^[transformR270^[colorize:#00004070",
-                    "sky_pos_y.png^[transformR270^[colorize:#00004070",
-                    "sky_pos_x.png^[transformR270^[colorize:#00004070",
-                    "sky_neg_x.png^[transformR90^[colorize:#00004070"}
+local darkskybox = { "sky_pos_z.png^[colorize:#00005070", "sky_neg_z.png^[transformR180^[colorize:#00004070",
+    "sky_neg_y.png^[transformR270^[colorize:#00004070",
+    "sky_pos_y.png^[transformR270^[colorize:#00004070",
+    "sky_pos_x.png^[transformR270^[colorize:#00004070",
+    "sky_neg_x.png^[transformR90^[colorize:#00004070" }
 
 -- check for active pova mod
 local pova = minetest.get_modpath("pova")
 
 -- gravity helper function
 local set_gravity = function(player, grav)
-
     if pova then
         pova.add_override(player:get_player_name(), "default", {
             gravity = grav
@@ -79,7 +78,6 @@ local nether_mod = minetest.get_modpath("nether") and minetest.get_modpath("xana
 local timer = 0
 
 minetest.register_globalstep(function(dtime)
-
     timer = timer + dtime
 
     if timer < 2 then
@@ -89,14 +87,12 @@ minetest.register_globalstep(function(dtime)
     timer = 0
 
     for _, player in pairs(minetest.get_connected_players()) do
-
         local name = player:get_player_name()
         local pos = player:get_pos()
         local current = player_list[name] or ""
 
         -------- this just adds nether background for xanadu server
         if nether_mod and pos.y < -28000 and current ~= "nether" then
-
             player:set_sky({
                 type = "plain",
                 base_color = "#1d1118", -- "#300530", --"#070916", --"#1D0504",
@@ -161,7 +157,6 @@ minetest.register_globalstep(function(dtime)
 
             -- Earth
         elseif pos.y > underground and pos.y < atmos_low and current ~= "earth" then
-
             player:set_sky({
                 type = "regular",
                 clouds = true,
@@ -188,7 +183,6 @@ minetest.register_globalstep(function(dtime)
 
             -- Atmos Low
         elseif pos.y > atmos_low and pos.y < atmos_up and current ~= "atmos_low" then
-
             player:set_sky({
                 type = "skybox",
                 textures = atmos_skybox,
@@ -216,7 +210,6 @@ minetest.register_globalstep(function(dtime)
 
             -- Atmos High
         elseif pos.y > atmos_up and pos.y < space_low and current ~= "atmos_high" then
-
             player:set_sky({
                 type = "skybox",
                 textures = atmos_skybox,
@@ -244,12 +237,12 @@ minetest.register_globalstep(function(dtime)
 
             -- Lower Space
         elseif pos.y > space_low and pos.y < space_mid and current ~= "space_low" then
-
             player:set_sky({
                 type = "skybox",
                 textures = space_skybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = false,
+                base_color = "#000050"
             })
 
             player:set_moon({
@@ -272,12 +265,12 @@ minetest.register_globalstep(function(dtime)
 
             -- Mid Space
         elseif pos.y > space_mid and pos.y < space_high and current ~= "space_mid" then
-
             player:set_sky({
                 type = "skybox",
                 textures = space_mid_skybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = false,
+                base_color = "#610088"
             })
 
             player:set_moon({
@@ -300,12 +293,12 @@ minetest.register_globalstep(function(dtime)
 
             -- Redsky
         elseif pos.y > redsky_low and pos.y < redsky_high and current ~= "redsky" then
-
             player:set_sky({
                 type = "skybox",
                 textures = redskybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = false,
+                base_color = "#880000"
             })
 
             player:set_moon({
@@ -328,12 +321,12 @@ minetest.register_globalstep(function(dtime)
 
             -- DeepSpace
         elseif pos.y > space_deep_low and pos.y < space_deep_high and current ~= "deepspace" then
-
             player:set_sky({
                 type = "skybox",
                 textures = space_deep_skybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = false,
+                base_color = "#000040"
             })
 
             player:set_moon({
@@ -356,12 +349,12 @@ minetest.register_globalstep(function(dtime)
 
             -- Everything else (blackness)
         elseif pos.y > space_deep_high and current ~= "blackness" then
-
             player:set_sky({
                 type = "skybox",
                 textures = darkskybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = false,
+                base_color = "#101010"
             })
 
             player:set_moon({
