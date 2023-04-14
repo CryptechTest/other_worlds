@@ -128,7 +128,7 @@ minetest.register_globalstep(function(dtime)
             --------
 
             -- Underground
-        elseif pos.y > -28000 and pos.y < underground and current ~= "underground" then
+        elseif pos.y > -11000 and pos.y < underground and current ~= "underground" then
             --		if pos.y < underground and current ~= "underground" then
 
             player:set_sky({
@@ -187,7 +187,7 @@ minetest.register_globalstep(function(dtime)
                 type = "skybox",
                 textures = atmos_skybox,
                 clouds = true,
-                sunrise_visible = false
+                sunrise_visible = true
             })
 
             player:set_moon({
@@ -214,7 +214,7 @@ minetest.register_globalstep(function(dtime)
                 type = "skybox",
                 textures = atmos_skybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = true
             })
 
             player:set_moon({
