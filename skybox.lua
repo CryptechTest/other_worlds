@@ -242,7 +242,7 @@ minetest.register_globalstep(function(dtime)
                 textures = space_skybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#000050"
+                base_color = "#0e0627"
             })
 
             player:set_moon({
@@ -253,7 +253,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.3,
+                scale = 0.8,
                 sunrise_visible = false
             })
 
@@ -270,7 +270,7 @@ minetest.register_globalstep(function(dtime)
                 textures = space_mid_skybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#610088",
+                base_color = "#29222c",
                 fog_tint_type = "moon_tint"
             })
 
@@ -282,7 +282,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.1,
+                scale = 0.4,
                 sunrise_visible = false
             })
 
@@ -299,8 +299,8 @@ minetest.register_globalstep(function(dtime)
                 textures = redskybox,
                 clouds = false,
                 sunrise_visible = false,
-                base_color = "#880000",
-                fog_tint_type = "moon_tint"
+                base_color = "#440817",
+                fog_tint_type = "sun_tint"
             })
 
             player:set_moon({
@@ -311,7 +311,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.6,
+                scale = 0.2,
                 sunrise_visible = false
             })
 
