@@ -186,8 +186,8 @@ minetest.register_globalstep(function(dtime)
             player:set_sky({
                 type = "skybox",
                 textures = atmos_skybox,
-                clouds = true,
-                sunrise_visible = true
+                clouds = false,
+                sunrise_visible = false
             })
 
             player:set_moon({
@@ -197,7 +197,7 @@ minetest.register_globalstep(function(dtime)
                 visible = true
             })
             player:set_sun({
-                visible = true,
+                visible = false,
                 scale = 1.1,
                 sunrise_visible = false
             })
@@ -214,7 +214,7 @@ minetest.register_globalstep(function(dtime)
                 type = "skybox",
                 textures = atmos_skybox,
                 clouds = false,
-                sunrise_visible = true
+                sunrise_visible = false
             })
 
             player:set_moon({
@@ -224,7 +224,7 @@ minetest.register_globalstep(function(dtime)
                 visible = false
             })
             player:set_sun({
-                visible = true,
+                visible = false,
                 scale = 1.2,
                 sunrise_visible = false
             })
@@ -253,7 +253,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.8,
+                scale = 1.2,
                 sunrise_visible = false
             })
 
@@ -282,7 +282,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.4,
+                scale = 0.6,
                 sunrise_visible = false
             })
 
@@ -311,7 +311,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.2,
+                scale = 0.3,
                 sunrise_visible = false
             })
 
