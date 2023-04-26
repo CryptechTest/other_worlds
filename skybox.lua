@@ -157,24 +157,26 @@ minetest.register_globalstep(function(dtime)
 
             -- Earth
         elseif pos.y > underground and pos.y < atmos_low and current ~= "earth" then
+            --[[
             player:set_sky({
                 type = "regular",
                 clouds = true,
                 sunrise_visible = true
             })
 
+
             player:set_moon({
-                visible = true
+                visible = false
             })
             player:set_stars({
-                visible = true
+                visible = false
             })
             player:set_sun({
-                visible = true,
+                visible = false,
                 scale = 1.0,
                 sunrise_visible = true
             })
-
+            --]]
             player_list[name] = "earth"
 
             if otherworlds.settings.gravity.enable then
@@ -186,15 +188,15 @@ minetest.register_globalstep(function(dtime)
             player:set_sky({
                 type = "skybox",
                 textures = atmos_skybox,
-                clouds = false,
-                sunrise_visible = false
+                clouds = true,
+                sunrise_visible = true
             })
 
             player:set_moon({
                 visible = false
             })
             player:set_stars({
-                visible = true
+                visible = false
             })
             player:set_sun({
                 visible = false,
@@ -214,7 +216,7 @@ minetest.register_globalstep(function(dtime)
                 type = "skybox",
                 textures = atmos_skybox,
                 clouds = false,
-                sunrise_visible = false
+                sunrise_visible = true
             })
 
             player:set_moon({
@@ -224,7 +226,7 @@ minetest.register_globalstep(function(dtime)
                 visible = false
             })
             player:set_sun({
-                visible = false,
+                visible = true,
                 scale = 1.2,
                 sunrise_visible = false
             })
@@ -253,7 +255,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 1.2,
+                scale = 0.8,
                 sunrise_visible = false
             })
 
@@ -282,7 +284,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.6,
+                scale = 0.4,
                 sunrise_visible = false
             })
 
@@ -311,7 +313,7 @@ minetest.register_globalstep(function(dtime)
             })
             player:set_sun({
                 visible = true,
-                scale = 0.3,
+                scale = 0.2,
                 sunrise_visible = false
             })
 
