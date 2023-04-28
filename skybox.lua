@@ -1,15 +1,4 @@
--- Heights for skyboxes
-local underground = -75
 
-local atmos_low = 1000
-local atmos_up = 2000         -- start height
-local space_low = 4000        -- start height
-local space_mid = 10000       -- start height
-local space_high = 16000 - 1  -- end height
-local redsky_low = 16000      -- start height
-local redsky_high = 22000 - 1 -- end height
-local space_deep_low = 22000  -- start height
-local space_deep_high = 31000
 
 -- Holds name of skybox showing for each player
 local player_list = {}
@@ -57,19 +46,6 @@ local darkskybox = { "sky_pos_z.png^[colorize:#00005070", "sky_neg_z.png^[transf
 
 -- check for active pova mod
 local pova = minetest.get_modpath("pova")
-
--- gravity helper function
-local set_gravity = function(player, grav)
-    if pova then
-        pova.add_override(player:get_player_name(), "default", {
-            gravity = grav
-        })
-    else
-        player:set_physics_override({
-            gravity = grav
-        })
-    end
-end
 
 -------- this just adds nether background for xanadu server
 local nether_mod = minetest.get_modpath("nether") and minetest.get_modpath("xanadu")
@@ -123,12 +99,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "nether"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 1.05)
+                --set_gravity(player, 1.05)
             end
             --------
 
             -- Underground
-        elseif pos.y > -11000 and pos.y < underground and current ~= "underground" then
+        elseif pos.y > -11000 and pos.y < otherworlds.skybox.underground and current ~= "underground" then
             --		if pos.y < underground and current ~= "underground" then
 
             player:set_sky({
@@ -152,11 +128,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "underground"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 1.0)
+                --set_gravity(player, 1.0)
+                otherworlds.gravity.set(player, "underground")
             end
 
             -- Earth
-        elseif pos.y > underground and pos.y < atmos_low and current ~= "earth" then
+        elseif pos.y > otherworlds.skybox.underground and pos.y < otherworlds.skybox.atmos_low and current ~= "earth" then
             --[[
             player:set_sky({
                 type = "regular",
@@ -180,11 +157,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "earth"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 1.0)
+                --set_gravity(player, 1.0)
+                otherworlds.gravity.set(player, "earth")
             end
 
             -- Atmos Low
-        elseif pos.y > atmos_low and pos.y < atmos_up and current ~= "atmos_low" then
+        elseif pos.y > otherworlds.skybox.atmos_low and pos.y < otherworlds.skybox.atmos_up and current ~= "atmos_low" then
             player:set_sky({
                 type = "skybox",
                 textures = atmos_skybox,
@@ -207,11 +185,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "atmos_low"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.8)
+                --set_gravity(player, 0.8)
+                otherworlds.gravity.set(player, "atmos_low")
             end
 
             -- Atmos High
-        elseif pos.y > atmos_up and pos.y < space_low and current ~= "atmos_high" then
+        elseif pos.y > otherworlds.skybox.atmos_up and pos.y < otherworlds.skybox.space_low and current ~= "atmos_high" then
             player:set_sky({
                 type = "skybox",
                 textures = atmos_skybox,
@@ -234,11 +213,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "atmos_high"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.5)
+                --set_gravity(player, 0.5)
+                otherworlds.gravity.set(player, "atmos_high")
             end
 
             -- Lower Space
-        elseif pos.y > space_low and pos.y < space_mid and current ~= "space_low" then
+        elseif pos.y > otherworlds.skybox.space_low and pos.y < otherworlds.skybox.space_mid and current ~= "space_low" then
             player:set_sky({
                 type = "skybox",
                 textures = space_skybox,
@@ -262,11 +242,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "space_low"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.1)
+                --set_gravity(player, 0.1)
+                otherworlds.gravity.set(player, "space_low")
             end
 
             -- Mid Space
-        elseif pos.y > space_mid and pos.y < space_high and current ~= "space_mid" then
+        elseif pos.y > otherworlds.skybox.space_mid and pos.y < otherworlds.skybox.space_high and current ~= "space_mid" then
             player:set_sky({
                 type = "skybox",
                 textures = space_mid_skybox,
@@ -291,11 +272,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "space_mid"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.09)
+                --set_gravity(player, 0.09)
+                otherworlds.gravity.set(player, "space_mid")
             end
 
             -- Redsky
-        elseif pos.y > redsky_low and pos.y < redsky_high and current ~= "redsky" then
+        elseif pos.y > otherworlds.skybox.redsky_low and pos.y < otherworlds.skybox.redsky_high and current ~= "redsky" then
             player:set_sky({
                 type = "skybox",
                 textures = redskybox,
@@ -320,11 +302,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "redsky"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.08)
+                --set_gravity(player, 0.08)
+                otherworlds.gravity.set(player, "redsky")
             end
 
             -- DeepSpace
-        elseif pos.y > space_deep_low and pos.y < space_deep_high and current ~= "deepspace" then
+        elseif pos.y > otherworlds.skybox.space_deep_low and pos.y < otherworlds.skybox.space_deep_high and current ~= "deepspace" then
             player:set_sky({
                 type = "skybox",
                 textures = space_deep_skybox,
@@ -349,11 +332,12 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "deepspace"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.02)
+                --set_gravity(player, 0.02)
+                otherworlds.gravity.set(player, "deepspace")
             end
 
             -- Everything else (blackness)
-        elseif pos.y < -10999 and current ~= "blackness" then
+        elseif pos.y < otherworlds.skybox.blackness and current ~= "blackness" then
             player:set_sky({
                 type = "skybox",
                 textures = darkskybox,
@@ -378,7 +362,8 @@ minetest.register_globalstep(function(dtime)
             player_list[name] = "blackness"
 
             if otherworlds.settings.gravity.enable then
-                set_gravity(player, 0.03)
+                --set_gravity(player, 0.03)
+                otherworlds.gravity.set(player, "blackness")
             end
         end
     end

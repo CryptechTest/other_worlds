@@ -1,12 +1,16 @@
 local modpath = minetest.get_modpath("other_worlds") .. DIR_DELIM
 
 otherworlds = {}
+otherworlds.skybox = {}
+otherworlds.skyboxes = {}
 
 dofile(modpath .. "settings.lua")
 dofile(modpath .. "mars_plants.lua")
 dofile(modpath .. "crystals.lua")
 dofile(modpath .. "space_nodes.lua")
 dofile(modpath .. "crafting.lua")
+dofile(modpath .. "sky_heights.lua")
+dofile(modpath .. "gravity.lua")
 dofile(modpath .. "skybox.lua")
 
 -- required helpers for mapgen options below
