@@ -12,6 +12,7 @@ local gravity_map = {
     blackness = 0.03
 }
 
+local pova = minetest.get_modpath('pova')
 -- gravity helper function
 local set_player_gravity = function(player, grav)
     if pova then
@@ -76,4 +77,5 @@ otherworlds.gravity.map = gravity_map
 otherworlds.gravity.reset = reset
 otherworlds.gravity.xset = set_direct
 otherworlds.gravity.set = set_gravity
+otherworlds.gravity.get = get
 otherworlds.gravity.get = get
