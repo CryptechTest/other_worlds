@@ -195,13 +195,17 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
         minetest.get_perlin_map(np_satmos, chulens):get_3d_map_flat(minpos, nvals7)
 
         local ni = 1
-
+        local spawn_point = minetest.setting_get_pos("static_spawnpoint") or {
+            x = 0,
+            y = 4500,
+            z = 0
+        }
         for z = z0, z1 do                       -- for each vertical plane do
             for y = y0, y1 do                   -- for each horizontal row do
                 local vi = area:index(x0, y, z) -- LVM index for first node in x row
 
                 for x = x0, x1 do               -- for each node do
-                    if vector.distance(vector.new({ x = x, y = y, z = z }), vector.new({ x = 0, y = 4500, z = 0 })) > 250 then
+                    if vector.distance(vector.new({ x = x, y = y, z = z }), vector.new(spawn_point)) > 250 then
                         local noise1abs = math.abs(nvals1[ni])
                         local noise4abs = math.abs(nvals4[ni])
                         local comet = false
