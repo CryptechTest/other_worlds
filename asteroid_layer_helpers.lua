@@ -7,19 +7,19 @@ local XMAX = 33000
 local ZMIN = -33000
 local ZMAX = 33000
 
-local ASCOT = 1.0 -- Large asteroid / comet nucleus noise threshold
-local SASCOT = 1.0 -- Small asteroid / comet nucleus noise threshold
-local STOT = 0.125 -- Asteroid stone threshold
-local COBT = 0.05 -- Asteroid cobble threshold
-local GRAT = 0.02 -- Asteroid gravel threshold
-local ICET = 0.05 -- Comet ice threshold
-local ATMOT = -0.2 -- Comet atmosphere threshold
-local FISTS = 0.01 -- Fissure noise threshold at surface. Controls size of fissures and amount / size of fissure entrances
-local FISEXP = 0.3 -- Fissure expansion rate under surface
+local ASCOT = 1.0        -- Large asteroid / comet nucleus noise threshold
+local SASCOT = 1.0       -- Small asteroid / comet nucleus noise threshold
+local STOT = 0.125       -- Asteroid stone threshold
+local COBT = 0.05        -- Asteroid cobble threshold
+local GRAT = 0.02        -- Asteroid gravel threshold
+local ICET = 0.05        -- Comet ice threshold
+local ATMOT = -0.2       -- Comet atmosphere threshold
+local FISTS = 0.01       -- Fissure noise threshold at surface. Controls size of fissures and amount / size of fissure entrances
+local FISEXP = 0.3       -- Fissure expansion rate under surface
 local ORECHA = 3 * 3 * 3 -- Ore 1/x chance per stone node
-local CPCHU = 0 -- Maximum craters per chunk
-local CRMIN = 5 -- Crater radius minimum, radius includes dust and obsidian layers
-local CRRAN = 8 -- Crater radius range
+local CPCHU = 0          -- Maximum craters per chunk
+local CRMIN = 5          -- Crater radius minimum, radius includes dust and obsidian layers
+local CRRAN = 8          -- Crater radius range
 
 local random = math.random
 local floor = math.floor
@@ -112,8 +112,7 @@ local np_satmos = {
 
 -- On dignode function. Atmosphere flows into a dug hole.
 minetest.register_on_dignode(function(pos, oldnode, digger)
-
-    if minetest.find_node_near(pos, 1, {"asteroid:atmos"}) then
+    if minetest.find_node_near(pos, 1, { "asteroid:atmos" }) then
         minetest.set_node(pos, {
             name = "asteroid:atmos"
         })
@@ -122,7 +121,6 @@ end)
 
 -- Generate on_generated function based on parameters
 function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
-
     local YMIN = ymin
     local YMAX = ymax
 
@@ -146,7 +144,6 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 
     -- return the function closed over the upvalues we want
     return function(minp, maxp, seed)
-
         if minp.x < XMIN or maxp.x > XMAX or minp.y < YMIN or maxp.y > YMAX or minp.z < ZMIN or maxp.z > ZMAX then
             return
         end
@@ -177,7 +174,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
         }
 
         local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
-        local area = VoxelArea:new{
+        local area = VoxelArea:new {
             MinEdge = emin,
             MaxEdge = emax
         }
@@ -199,87 +196,83 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 
         local ni = 1
 
-        for z = z0, z1 do -- for each vertical plane do
-            for y = y0, y1 do -- for each horizontal row do
-
+        for z = z0, z1 do                       -- for each vertical plane do
+            for y = y0, y1 do                   -- for each horizontal row do
                 local vi = area:index(x0, y, z) -- LVM index for first node in x row
 
-                for x = x0, x1 do -- for each node do
+                for x = x0, x1 do               -- for each node do
+                    if vector.distance(vector.new({ x = x, y = y, z = z }), vector.new({ x = 0, y = 4500, z = 0 })) > 250 then
+                        local noise1abs = math.abs(nvals1[ni])
+                        local noise4abs = math.abs(nvals4[ni])
+                        local comet = false
 
-                    local noise1abs = math.abs(nvals1[ni])
-                    local noise4abs = math.abs(nvals4[ni])
-                    local comet = false
-
-                    -- comet biome
-                    if nvals6[ni] < -(ASCOT + ATMOT) or (nvals7[ni] < -(SASCOT + ATMOT) and nvals1[ni] < ASCOT) then
-                        comet = true
-                    end
-
-                    -- if below surface
-                    if noise1abs > ASCOT or noise4abs > SASCOT then
-
-                        -- noise1dep zero at surface, positive beneath
-                        local noise1dep = noise1abs - ASCOT
-
-                        -- if no fissure
-                        if math.abs(nvals3[ni]) > FISTS + noise1dep * FISEXP then
-
-                            -- noise4dep zero at surface, positive beneath
-                            local noise4dep = noise4abs - SASCOT
-
-                            if not comet or (comet and (noise1dep > random() + ICET or noise4dep > random() + ICET)) then
-
-                                -- asteroid or asteroid materials in comet
-                                if noise1dep >= STOT or noise4dep >= STOT then
-
-                                    -- stone/ores
-                                    if random(ORECHA) == 2 then
-
-                                        if nvals5[ni] > 0.9 then
-                                            data[vi] = c_titanium
-										elseif nvals5[ni] > 0.6 then
-                                            data[vi] = c_aluminum
-                                        elseif nvals5[ni] > 0.4 then
-                                            data[vi] = c_coalore
-                                        elseif nvals5[ni] < -0.8 then
-                                            data[vi] = c_titanium
-                                        elseif nvals5[ni] < -0.7 then
-                                            data[vi] = c_nickel
-                                        elseif nvals5[ni] < -0.5 then
-                                            data[vi] = c_diamondore
-                                        elseif nvals5[ni] > 0.2 then
-                                            data[vi] = c_meseore
-                                        elseif nvals5[ni] < -0.2 then
-                                            data[vi] = c_copperore
-                                        else
-                                            data[vi] = c_ironore
-                                        end
-                                    else
-                                        data[vi] = c_stone
-                                    end
-
-                                elseif noise1dep >= COBT or noise4dep >= COBT then
-                                    data[vi] = c_cobble
-                                elseif noise1dep >= GRAT or noise4dep >= GRAT then
-                                    data[vi] = c_gravel
-                                else
-                                    data[vi] = c_dust
-                                end
-                            else -- comet materials
-                                if noise1dep >= ICET or noise4dep >= ICET then
-                                    data[vi] = c_waterice
-                                else
-                                    data[vi] = c_snowblock
-                                end
-                            end
-
-                        elseif comet then -- fissures, if comet then add atmosphere
-                            data[vi] = c_atmos
+                        -- comet biome
+                        if nvals6[ni] < -(ASCOT + ATMOT) or (nvals7[ni] < -(SASCOT + ATMOT) and nvals1[ni] < ASCOT) then
+                            comet = true
                         end
 
-                    elseif comet then -- if comet atmosphere then
-                        data[vi] = c_atmos
+                        -- if below surface
+                        if noise1abs > ASCOT or noise4abs > SASCOT then
+                            -- noise1dep zero at surface, positive beneath
+                            local noise1dep = noise1abs - ASCOT
+
+                            -- if no fissure
+                            if math.abs(nvals3[ni]) > FISTS + noise1dep * FISEXP then
+                                -- noise4dep zero at surface, positive beneath
+                                local noise4dep = noise4abs - SASCOT
+
+                                if not comet or (comet and (noise1dep > random() + ICET or noise4dep > random() + ICET)) then
+                                    -- asteroid or asteroid materials in comet
+                                    if noise1dep >= STOT or noise4dep >= STOT then
+                                        -- stone/ores
+                                        if random(ORECHA) == 2 then
+                                            if nvals5[ni] > 0.9 then
+                                                data[vi] = c_titanium
+                                            elseif nvals5[ni] > 0.6 then
+                                                data[vi] = c_aluminum
+                                            elseif nvals5[ni] > 0.4 then
+                                                data[vi] = c_coalore
+                                            elseif nvals5[ni] < -0.8 then
+                                                data[vi] = c_titanium
+                                            elseif nvals5[ni] < -0.7 then
+                                                data[vi] = c_nickel
+                                            elseif nvals5[ni] < -0.5 then
+                                                data[vi] = c_diamondore
+                                            elseif nvals5[ni] > 0.2 then
+                                                data[vi] = c_meseore
+                                            elseif nvals5[ni] < -0.2 then
+                                                data[vi] = c_copperore
+                                            else
+                                                data[vi] = c_ironore
+                                            end
+                                        else
+                                            data[vi] = c_stone
+                                        end
+                                    elseif noise1dep >= COBT or noise4dep >= COBT then
+                                        data[vi] = c_cobble
+                                    elseif noise1dep >= GRAT or noise4dep >= GRAT then
+                                        data[vi] = c_gravel
+                                    else
+                                        data[vi] = c_dust
+                                    end
+                                else -- comet materials
+                                    if noise1dep >= ICET or noise4dep >= ICET then
+                                        data[vi] = c_waterice
+                                    else
+                                        data[vi] = c_snowblock
+                                    end
+                                end
+                            elseif comet then -- fissures, if comet then add atmosphere
+                                data[vi] = c_atmos
+                            end
+                        elseif comet then -- if comet atmosphere then
+                            data[vi] = c_atmos
+                        end
+                    else
+
                     end
+
+
 
                     ni = ni + 1
                     vi = vi + 1
@@ -289,7 +282,6 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 
         -- craters
         for ci = 1, CPCHU do -- iterate
-
             -- exponential radius
             local cr = CRMIN + floor(random() ^ 2 * CRRAN)
             local cx = random(minp.x + cr, maxp.x - cr) -- centre x
@@ -298,14 +290,12 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
             local surfy = false
 
             for y = y1, y0 + cr, -1 do
-
                 local vi = area:index(cx, y, cz) -- LVM index for node
                 local nodeid = data[vi]
 
                 if nodeid == c_dust or nodeid == c_gravel or nodeid == c_cobble then
                     surfy = y
                     break
-
                 elseif nodename == c_snowblock or nodename == c_waterice then
                     comet = true
                     surfy = y
@@ -315,25 +305,20 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
 
             -- if surface found and 8 node space above impact node then
             if surfy and y1 - surfy > 8 then
-
-                for x = cx - cr, cx + cr do -- for each plane do
-                    for z = cz - cr, cz + cr do -- for each column do
+                for x = cx - cr, cx + cr do               -- for each plane do
+                    for z = cz - cr, cz + cr do           -- for each column do
                         for y = surfy - cr, surfy + cr do -- for each node do
-
                             -- LVM index for node
                             local vi = area:index(x, y, z)
                             local nr = ((x - cx) ^ 2 + (y - surfy) ^ 2 + (z - cz) ^ 2) ^ 0.5
 
                             if nr <= cr - 2 then
-
                                 if comet then
                                     data[vi] = c_atmos
                                 else
                                     data[vi] = c_air
                                 end
-
                             elseif nr <= cr - 1 then
-
                                 local nodeid = data[vi]
 
                                 if nodeid == c_gravel or nodeid == c_cobble or nodeid == c_stone or nodeid ==
@@ -342,9 +327,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
                                     c_nickel then
                                     data[vi] = c_dust
                                 end
-
                             elseif nr <= cr then
-
                                 local nodeid = data[vi]
 
                                 if nodeid == c_cobble or nodeid == c_stone then
