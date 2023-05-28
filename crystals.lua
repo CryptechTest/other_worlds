@@ -29,7 +29,7 @@ for i in ipairs(crystal_list) do
 		light_source = 10,
 		use_texture_alpha = "blend",
 		visual_scale = 10,
-		groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3},
+		groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3, crystal = 1},
 		sounds = default.node_sound_glass_defaults(),
 	})
 
@@ -46,7 +46,7 @@ for i in ipairs(crystal_list) do
 		light_source = 10,
 		use_texture_alpha = "blend",
 		visual_scale = 10,
-		groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3},
+		groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3, crystal = 2},
 		sounds = default.node_sound_glass_defaults(),
 	})
 end
