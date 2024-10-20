@@ -38,6 +38,20 @@ local crystal = {"crystals:ghost_crystal_1", "crystals:ghost_crystal_2", "crysta
 
 local random = math.random
 
+local function is_atmos_node(pos)
+    local node = minetest.get_node(pos)
+    if minetest.get_item_group(node.name, "vacuum") == 1 or minetest.get_item_group(node.name, "atmosphere") > 0 then
+        return true
+    end
+    if node.name == "air" then
+        return true
+    end
+    if node.name == "technic:dummy_light_source" then
+        return true
+    end
+    return false
+end
+
 local function get_solid_node(pos)
     local node = nil
     local npos = {
@@ -47,8 +61,7 @@ local function get_solid_node(pos)
     }
     local c = 0
     while node == nil and c < 128 do
-        if (minetest.get_node(npos).name ~= "vacuum" and minetest.get_node(npos).name ~= "vacuum:atmos" and
-            minetest.get_node(npos).name ~= "air") then
+        if (not is_atmos_node(pos)) then
             return npos
         end
         npos = {
@@ -62,8 +75,7 @@ local function get_solid_node(pos)
 end
 
 local function is_solid(pos)
-    if (minetest.get_node(pos).name ~= "vacuum" and minetest.get_node(pos).name ~= "vacuum:atmos" and
-        minetest.get_node(pos).name ~= "air") then
+    if (not is_atmos_node(pos)) then
         return true
     end
     return false

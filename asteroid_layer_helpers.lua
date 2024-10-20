@@ -124,7 +124,8 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
     local YMIN = ymin
     local YMAX = ymax
 
-    local c_air = content_ids.c_air
+    local c_air = minetest.get_content_id("air")
+    local c_vacuum = content_ids.c_air
     local c_stone = content_ids.c_stone
     local c_cobble = content_ids.c_cobble
     local c_gravel = content_ids.c_gravel
@@ -273,7 +274,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
                             data[vi] = c_atmos
                         end
                     else
-
+                        data[vi] = c_vacuum
                     end
 
 
@@ -296,11 +297,16 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
             for y = y1, y0 + cr, -1 do
                 local vi = area:index(cx, y, cz) -- LVM index for node
                 local nodeid = data[vi]
+                                            
+                if (nodeid == c_air) then
+                    -- force node to vacuum
+                    data[vi] = c_vacuum
+                end
 
                 if nodeid == c_dust or nodeid == c_gravel or nodeid == c_cobble then
                     surfy = y
                     break
-                elseif nodename == c_snowblock or nodename == c_waterice then
+                elseif nodeid == c_snowblock or nodeid == c_waterice then
                     comet = true
                     surfy = y
                     break
@@ -320,7 +326,7 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
                                 if comet then
                                     data[vi] = c_atmos
                                 else
-                                    data[vi] = c_air
+                                    data[vi] = c_vacuum
                                 end
                             elseif nr <= cr - 1 then
                                 local nodeid = data[vi]
