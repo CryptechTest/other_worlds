@@ -343,6 +343,8 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
                                 if nodeid == c_cobble or nodeid == c_stone then
                                     data[vi] = c_obsidian -- obsidian buried under dust
                                 end
+                            else
+                                data[vi] = c_vacuum
                             end
                         end
                     end
