@@ -44,9 +44,8 @@ local set_direct = function(player, grav)
 end
 
 -- get gravity of player
-local get = function(player)
-    local name = player:get_player_name()
-    local pos = player:get_pos()
+local get = function(obj)
+    local pos = obj:get_pos()
     local y = pos.y
     local sky = "unknown"
     if pos.y > otherworlds.skybox.blackness + 1 and pos.y < otherworlds.skybox.underground then
@@ -77,5 +76,4 @@ otherworlds.gravity.map = gravity_map
 otherworlds.gravity.reset = reset
 otherworlds.gravity.xset = set_direct
 otherworlds.gravity.set = set_gravity
-otherworlds.gravity.get = get
 otherworlds.gravity.get = get
