@@ -21,5 +21,13 @@ minetest.register_on_generated(otherworlds.asteroids.create_on_generated(YMIN, Y
     c_snowblock = minetest.get_content_id("default:snowblock"),
     c_titanium = minetest.get_content_id("ctg_world:stone_space_with_titanium"),
     c_aluminum = minetest.get_content_id("ctg_world:stone_space_with_aluminum"),
-    c_nickel = minetest.get_content_id("ctg_world:stone_space_with_nickel")
+    c_nickel = minetest.get_content_id("ctg_world:stone_space_with_nickel"),
+    c_gold = minetest.get_content_id("asteroid:mineral_gold"),
+    c_silver = minetest.get_content_id("asteroid:mineral_silver"),
+    c_tin = minetest.get_content_id("asteroid:mineral_tin"),
+    c_uranium = minetest.get_content_id("asteroid:mineral_uranium"),
+    c_chromium = minetest.get_content_id("asteroid:mineral_chromium"),
+    c_zinc = minetest.get_content_id("asteroid:mineral_zinc"),
+    c_lead = minetest.get_content_id("asteroid:mineral_lead"),
+    c_sulfur = minetest.get_content_id("asteroid:mineral_sulfur"),
 }))

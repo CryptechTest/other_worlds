@@ -142,6 +142,14 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
     local c_titanium = content_ids.c_titanium
     local c_aluminum = content_ids.c_aluminum
     local c_nickel = content_ids.c_nickel
+    local c_gold = content_ids.c_gold
+    local c_silver = content_ids.c_silver
+    local c_tin = content_ids.c_tin
+    local c_uranium = content_ids.c_uranium
+    local c_chromium = content_ids.c_chromium
+    local c_zinc = content_ids.c_zinc
+    local c_lead = content_ids.c_lead
+    local c_sulfur = content_ids.c_sulfur
 
     -- return the function closed over the upvalues we want
     return function(minp, maxp, seed)
@@ -230,23 +238,37 @@ function otherworlds.asteroids.create_on_generated(ymin, ymax, content_ids)
                                     -- asteroid or asteroid materials in comet
                                     if noise1dep >= STOT or noise4dep >= STOT then
                                         -- stone/ores
-                                        if random(ORECHA) == 2 then
+                                        if random(ORECHA) == 2 or (y > 17000 and random(ORECHA) == 5) then
                                             if nvals5[ni] > 0.9 then
                                                 data[vi] = c_titanium
+                                            elseif nvals5[ni] > 0.825 then
+                                                data[vi] = c_uranium
+                                            elseif nvals5[ni] > 0.7 then
+                                                data[vi] = c_lead
                                             elseif nvals5[ni] > 0.6 then
-                                                data[vi] = c_aluminum
-                                            elseif nvals5[ni] > 0.4 then
-                                                data[vi] = c_coalore
-                                            elseif nvals5[ni] < -0.8 then
-                                                data[vi] = c_titanium
-                                            elseif nvals5[ni] < -0.7 then
-                                                data[vi] = c_nickel
-                                            elseif nvals5[ni] < -0.5 then
                                                 data[vi] = c_diamondore
-                                            elseif nvals5[ni] > 0.2 then
+                                            elseif nvals5[ni] > 0.5 then
+                                                data[vi] = c_coalore
+                                            elseif nvals5[ni] > 0.4 then
+                                                data[vi] = c_sulfur
+                                            elseif nvals5[ni] > 0.3 then
+                                                data[vi] = c_tin
+                                            elseif nvals5[ni] >= 0.0 then
                                                 data[vi] = c_meseore
-                                            elseif nvals5[ni] < -0.2 then
+                                            elseif nvals5[ni] > -0.2 then
                                                 data[vi] = c_copperore
+                                            elseif nvals5[ni] > -0.3 then
+                                                data[vi] = c_chromium
+                                            elseif nvals5[ni] > -0.4 then
+                                                data[vi] = c_zinc
+                                            elseif nvals5[ni] > -0.5 then
+                                                data[vi] = c_nickel
+                                            elseif nvals5[ni] > -0.7 then
+                                                data[vi] = c_aluminum
+                                            elseif nvals5[ni] > -0.8 then
+                                                data[vi] = c_silver
+                                            elseif nvals5[ni] > -0.9 then
+                                                data[vi] = c_gold
                                             else
                                                 data[vi] = c_ironore
                                             end
