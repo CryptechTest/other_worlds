@@ -97,6 +97,15 @@ minetest.register_node(":asteroid:reddust", {
 })
 
 minetest.register_node(":asteroid:ironore", {
+	description = "Asteroid Iron Ore",
+	tiles = {"default_stone.png^default_mineral_iron.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
+	drop = "default:iron_lump",
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node(":asteroid:red_ironore", {
 	description = "Red Asteroid Iron Ore",
 	tiles = {"asteroid_redstone.png^default_mineral_iron.png"},
 	is_ground_content = false,
@@ -106,6 +115,15 @@ minetest.register_node(":asteroid:ironore", {
 })
 
 minetest.register_node(":asteroid:copperore", {
+	description = "Asteroid Copper Ore",
+	tiles = {"default_stone.png^default_mineral_copper.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
+	drop = "default:copper_lump",
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node(":asteroid:red_copperore", {
 	description = "Red Asteroid Copper Ore",
 	tiles = {"asteroid_redstone.png^default_mineral_copper.png"},
 	is_ground_content = false,
@@ -115,6 +133,15 @@ minetest.register_node(":asteroid:copperore", {
 })
 
 minetest.register_node(":asteroid:coalore", {
+	description = "Asteroid Coal Ore",
+	tiles = {"default_stone.png^default_mineral_coal.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
+	drop = "default:coal_lump",
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node(":asteroid:red_coalore", {
 	description = "Red Asteroid Coal Ore",
 	tiles = {"asteroid_redstone.png^default_mineral_coal.png"},
 	is_ground_content = false,
@@ -124,6 +151,15 @@ minetest.register_node(":asteroid:coalore", {
 })
 
 minetest.register_node(":asteroid:diamondore", {
+	description = "Asteroid Diamond Ore",
+	tiles = {"asteroid_cobble.png^default_mineral_diamond.png"},
+	is_ground_content = false,
+	groups = {cracky = 3},
+	drop = "default:diamond",
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node(":asteroid:red_diamondore", {
 	description = "Red Asteroid Diamond Ore",
 	tiles = {"asteroid_redstone.png^default_mineral_diamond.png"},
 	is_ground_content = false,
@@ -133,6 +169,15 @@ minetest.register_node(":asteroid:diamondore", {
 })
 
 minetest.register_node(":asteroid:meseore", {
+	description = "Asteroid Mese Ore",
+	tiles = {"asteroid_cobble.png^default_mineral_mese.png"},
+	is_ground_content = false,
+	groups = {cracky = 3},
+	drop = "default:mese_crystal",
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node(":asteroid:red_meseore", {
 	description = "Red Asteroid Mese Ore",
 	tiles = {"asteroid_redstone.png^default_mineral_mese.png"},
 	is_ground_content = false,
