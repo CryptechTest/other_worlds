@@ -187,7 +187,7 @@ minetest.register_node(":asteroid:red_meseore", {
 })
 
 minetest.register_node(":asteroid:mineral_tin", {
-	description = S("Asteroid Tin Ore"),
+	description = ("Asteroid Tin Ore"),
 	tiles = {"asteroid_cobble.png^moreores_mineral_tin.png"},
 	is_ground_content = false,
 	groups = {cracky=1, pickaxey=1},
@@ -196,7 +196,7 @@ minetest.register_node(":asteroid:mineral_tin", {
 })
 
 minetest.register_node(":asteroid:red_mineral_tin", {
-	description = S("Red Asteroid Tin Ore"),
+	description = ("Red Asteroid Tin Ore"),
 	tiles = {"asteroid_redstone.png^moreores_mineral_tin.png"},
 	is_ground_content = false,
 	groups = {cracky=2, pickaxey=1},
@@ -205,7 +205,7 @@ minetest.register_node(":asteroid:red_mineral_tin", {
 })
 
 minetest.register_node(":asteroid:mineral_gold", {
-	description = S("Asteroid Gold Ore"),
+	description = ("Asteroid Gold Ore"),
 	tiles = {"asteroid_cobble.png^default_mineral_gold.png"},
 	is_ground_content = false,
 	groups = {cracky=2, pickaxey=1},
@@ -214,7 +214,7 @@ minetest.register_node(":asteroid:mineral_gold", {
 })
 
 minetest.register_node(":asteroid:red_mineral_gold", {
-	description = S("Red Asteroid Gold Ore"),
+	description = ("Red Asteroid Gold Ore"),
 	tiles = {"asteroid_redstone.png^default_mineral_gold.png"},
 	is_ground_content = false,
 	groups = {cracky=3, pickaxey=1},
@@ -226,7 +226,7 @@ minetest.register_node(":asteroid:red_mineral_gold", {
 if core.get_modpath("moreores") then
 
 	minetest.register_node(":asteroid:mineral_silver", {
-		description = S("Asteroid Silver Ore"),
+		description = ("Asteroid Silver Ore"),
 		tiles = {"asteroid_cobble.png^moreores_mineral_silver.png"},
 		is_ground_content = false,
 		groups = {cracky=2, pickaxey=1},
@@ -235,7 +235,7 @@ if core.get_modpath("moreores") then
 	})
 
 	minetest.register_node(":asteroid:red_mineral_silver", {
-		description = S("Red Asteroid Silver Ore"),
+		description = ("Red Asteroid Silver Ore"),
 		tiles = {"asteroid_redstone.png^moreores_mineral_silver.png"},
 		is_ground_content = false,
 		groups = {cracky=3, pickaxey=1},
@@ -248,7 +248,7 @@ end
 if core.get_modpath("technic") then
 
 	minetest.register_node(":asteroid:mineral_uranium", {
-		description = S("Asteroid Uranium Ore"),
+		description = ("Asteroid Uranium Ore"),
 		tiles = {"asteroid_cobble.png^technic_mineral_uranium.png"},
 		is_ground_content = false,
 		groups = {cracky=3, radioactive=1, pickaxey=1},
@@ -259,7 +259,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:red_mineral_uranium", {
-		description = S("Red Asteroid Uranium Ore"),
+		description = ("Red Asteroid Uranium Ore"),
 		tiles = {"asteroid_redstone.png^technic_mineral_uranium.png"},
 		is_ground_content = false,
 		groups = {cracky=3, radioactive=1, pickaxey=1},
@@ -270,7 +270,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:mineral_chromium", {
-		description = S("Asteroid Chromium Ore"),
+		description = ("Asteroid Chromium Ore"),
 		tiles = {"asteroid_cobble.png^technic_mineral_chromium.png"},
 		is_ground_content = false,
 		groups = {cracky=2, pickaxey=1},
@@ -281,7 +281,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:red_mineral_chromium", {
-		description = S("Red Asteroid Chromium Ore"),
+		description = ("Red Asteroid Chromium Ore"),
 		tiles = {"asteroid_redstone.png^technic_mineral_chromium.png"},
 		is_ground_content = false,
 		groups = {cracky=3, pickaxey=1},
@@ -292,7 +292,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:mineral_zinc", {
-		description = S("Asteroid Zinc Ore"),
+		description = ("Asteroid Zinc Ore"),
 		tiles = {"asteroid_cobble.png^technic_mineral_zinc.png"},
 		is_ground_content = false,
 		groups = {cracky=2, pickaxey=1},
@@ -303,7 +303,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:red_mineral_zinc", {
-		description = S("Red Asteroid Zinc Ore"),
+		description = ("Red Asteroid Zinc Ore"),
 		tiles = {"asteroid_redstone.png^technic_mineral_zinc.png"},
 		is_ground_content = false,
 		groups = {cracky=3, pickaxey=1},
@@ -314,7 +314,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:mineral_lead", {
-		description = S("Asteroid Lead Ore"),
+		description = ("Asteroid Lead Ore"),
 		tiles = {"asteroid_cobble.png^technic_mineral_lead.png"},
 		is_ground_content = false,
 		groups = {cracky=2, pickaxey=1},
@@ -325,7 +325,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:red_mineral_lead", {
-		description = S("Red Asteroid Lead Ore"),
+		description = ("Red Asteroid Lead Ore"),
 		tiles = {"asteroid_redstone.png^technic_mineral_lead.png"},
 		is_ground_content = false,
 		groups = {cracky=3, pickaxey=1},
@@ -336,7 +336,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:mineral_sulfur", {
-		description = S("Asteroid Sulfur Ore"),
+		description = ("Asteroid Sulfur Ore"),
 		tiles = {"asteroid_cobble.png^technic_mineral_sulfur.png"},
 		is_ground_content = false,
 		groups = {cracky=2, pickaxey=1},
@@ -347,7 +347,7 @@ if core.get_modpath("technic") then
 	})
 
 	minetest.register_node(":asteroid:red_mineral_sulfur", {
-		description = S("Red Asteroid Sulfur Ore"),
+		description = ("Red Asteroid Sulfur Ore"),
 		tiles = {"asteroid_redstone.png^technic_mineral_sulfur.png"},
 		is_ground_content = false,
 		groups = {cracky=3, pickaxey=1},
